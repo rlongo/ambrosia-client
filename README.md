@@ -1,34 +1,5 @@
-# ambrosia
+# Ambrosia Client
 
-## Project setup
-```
-npm install
-```
+[![Build Status](https://travis-ci.org/rlongo/ambrosia-client.svg?branch=master)](https://travis-ci.org/rlongo/ambrosia-client)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Run your unit tests
-```
-npm run test:unit
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This client can be used to interact with the [Ambrosia backend](https://github.com/rlongo/ambrosia).
