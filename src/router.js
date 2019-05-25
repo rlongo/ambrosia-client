@@ -2,6 +2,10 @@ import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
 
+// PureCSS
+import Purecss from "purecss";
+import "purecss/build/grids-responsive-min.css";
+
 Vue.use(Router);
 
 export default new Router({
@@ -20,7 +24,8 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "about" */ "./views/About.vue"),
+      Purecss
     }
   ]
 });
