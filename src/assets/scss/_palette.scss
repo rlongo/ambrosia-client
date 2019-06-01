@@ -1,11 +1,15 @@
-$color1: rgba(246, 247, 235, 1);
-$color2: rgba(233, 79, 55, 1);
-$color3: rgba(57, 62, 65, 1);
-$color4: rgba(63, 136, 197, 1);
-$color5: rgba(68, 187, 164, 1);
+$red: rgba(233, 79, 55, 1);
+$blue: rgba(63, 136, 197, 1); 
+$green: rgba(68, 187, 164, 1);
+$purple: rgba(182, 62, 196, 1);
+$yellow: rgba(255, 186, 73, 1);
 
-$primary: $color2;
-$secondary: $color4;
-$tertiary: $color5;
-$dark: $color3;
-$light: $color1
+$light: rgba(253, 253, 255, 1);
+$dark: rgba(57, 62, 65, 1);
+
+$primary: $blue;
+$secondary: $green;
+$tertiary: $yellow;
+
+$theme-font: $light;
+$theme: $dark;

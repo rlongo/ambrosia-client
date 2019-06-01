@@ -7,7 +7,7 @@
     >
       <div class="pure-u-1 pure-u-md-1-2">
         <div class="pure-menu">
-          <a href="#" class="pure-menu-heading custom-brand">Brand</a>
+          <a href="#" class="pure-menu-heading custom-brand">Ambrosia</a>
           <a
             href="#"
             class="custom-toggle"
@@ -83,21 +83,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 $animationTime: 0.5s;
 $nav-height: 3.2em;
 
 .nav-link {
   padding: ($nav-height - 1.2em) / 2;
-  color: $light;
+  color: $theme-font;
   &:hover {
-    color: $tertiary;
+    color: $secondary;
   }
 }
 
 .custom-brand {
   text-align: left;
   font-size: $nav-height / 2;
-  color: $light;
+  color: $theme-font;
 }
 
 .nav-options {
@@ -132,7 +133,7 @@ $nav-height: 3.2em;
 }
 
 .custom-toggle .bar {
-  background-color: $light;
+  background-color: $theme-font;
   display: block;
   width: 20px;
   height: 2px;

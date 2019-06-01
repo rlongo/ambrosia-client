@@ -18,14 +18,7 @@ export default {
 
 <style lang="scss">
 body {
-  background: $dark;
-  color: $light;
-}
-
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  background: $theme;
+  color: $theme-font;
 }
 </style>

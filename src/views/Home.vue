@@ -1,18 +1,32 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <Recipe v-bind:recipe="myrecipe" v-bind:key="myrecipe.name"></Recipe>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Recipe from "./Recipe";
+import { Ambrosia } from "../services/ambrosia";
 
 export default {
   name: "home",
   components: {
-    HelloWorld
+    Recipe
+  },
+  data: function() {
+    return {
+      ambrosia: new Ambrosia(),
+      myrecipe: {name: "loading"}
+    };
+  },
+  methods: {
+    loadRecipe: function() {
+      this.myrecipe = this.ambrosia.getRecipe();
+      console.log("Got Recipe:", this.myrecipe.name);
+    }
+  },
+  mounted: function() {
+    this.loadRecipe();
   }
 };
 </script>
