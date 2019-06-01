@@ -6,7 +6,7 @@
 
 <script>
 import Recipe from "./Recipe";
-import { Ambrosia } from "../services/ambrosia";
+import { Ambrosia } from "../ambrosia/ambrosia";
 
 export default {
   name: "home",
