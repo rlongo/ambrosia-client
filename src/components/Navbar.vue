@@ -88,7 +88,7 @@ $nav-height: 3.2em;
 
 .nav-link {
   padding: ($nav-height - 1.2em) / 2;
-  color: $light;
+  color: $theme-font;
   &:hover {
     color: $tertiary;
   }
@@ -97,7 +97,7 @@ $nav-height: 3.2em;
 .custom-brand {
   text-align: left;
   font-size: $nav-height / 2;
-  color: $light;
+  color: $theme-font;
 }
 
 .nav-options {
@@ -132,7 +132,7 @@ $nav-height: 3.2em;
 }
 
 .custom-toggle .bar {
-  background-color: $light;
+  background-color: $theme-font;
   display: block;
   width: 20px;
   height: 2px;

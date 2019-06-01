@@ -18,8 +18,8 @@ export default {
 
 <style lang="scss">
 body {
-  background: $dark;
-  color: $light;
+  background: $theme;
+  color: $theme-font;
 }
 
 #app {

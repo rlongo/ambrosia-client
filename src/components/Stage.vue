@@ -4,11 +4,11 @@
         <p class="notes" v-if="stage.notes">{{stage.notes}}</p>
 
         <div class="stage pure-g">
-            <div class="pure-u-1  pure-u-md-1-4">
+            <div class="pure-u-1  pure-u-md-1-4" v-if="stage.ingredients">
                 <h3>Ingredients</h3>
                 <Ingredients v-bind:ingredients="stage.ingredients"></Ingredients>
             </div>
-            <div class="pure-u-1  pure-u-md-3-4">
+            <div class="pure-u-1" v-bind:class="{ 'pure-u-md-3-4': stage.ingredients }">
                 <Steps v-bind:steps="stage.steps"></Steps>
             </div>
         </div>
@@ -29,8 +29,6 @@ import Steps from "../components/Procedure";
  
  <style lang="scss" scoped>
  .stage {
-     margin: 2%;
-
     .name {
         text-align: left;
     }

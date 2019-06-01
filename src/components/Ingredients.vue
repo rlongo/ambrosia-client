@@ -25,8 +25,7 @@ export default {
 }
 
 .ingredient {
-    border-bottom: 1px solid $light;
-    padding: 2px;
+    border-bottom: 1px solid $theme-font;
 
     .name {
         font-size: 1.2rem;
