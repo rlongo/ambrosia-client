@@ -7,7 +7,7 @@
     >
       <div class="pure-u-1 pure-u-md-1-2">
         <div class="pure-menu">
-          <a href="#" class="pure-menu-heading custom-brand">Brand</a>
+          <a href="#" class="pure-menu-heading custom-brand">Ambrosia</a>
           <a
             href="#"
             class="custom-toggle"
