@@ -29,7 +29,7 @@ export default {
 }
 
 .tags {
-  font-size: 0.85rem;
+  font-size: 0.8em;
   font-style: italic;
   margin-bottom: 3vh;
   
@@ -39,7 +39,7 @@ export default {
 }
  
 .notes {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   text-align: left;
 }
 </style>

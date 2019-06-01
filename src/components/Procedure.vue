@@ -16,6 +16,5 @@ export default {
 .step {
     text-align: justify;
     margin-bottom: 1vh;
-    line-height: 1.3;
 }
 </style>

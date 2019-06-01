@@ -31,6 +31,7 @@ import Steps from "../components/Procedure";
  .stage {
     .name {
         text-align: left;
+        margin-top: 0;
     }
 
     .notes {

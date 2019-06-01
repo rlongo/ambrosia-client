@@ -83,6 +83,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 $animationTime: 0.5s;
 $nav-height: 3.2em;
 
@@ -90,7 +91,7 @@ $nav-height: 3.2em;
   padding: ($nav-height - 1.2em) / 2;
   color: $theme-font;
   &:hover {
-    color: $tertiary;
+    color: $secondary;
   }
 }
 

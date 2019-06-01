@@ -28,7 +28,7 @@ export default {
     border-bottom: 1px solid $theme-font;
 
     .name {
-        font-size: 1.2rem;
+        font-size: 1.2em;
         text-transform: capitalize;
     }
 
