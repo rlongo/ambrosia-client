@@ -21,8 +21,15 @@ export default {
   },
   methods: {
     loadRecipe: function() {
-      this.myrecipe = this.ambrosia.getRecipe();
-      console.log("Got Recipe:", this.myrecipe.name);
+      this.ambrosia.getRecipes()
+        .then(response => {
+          if (response.data && response.data.length > 0) {
+            this.myrecipe = response.data[0];
+          }
+        })
+        .catch(err => {
+          console.log("error" + err);
+        }).bind(this);
     }
   },
   mounted: function() {
