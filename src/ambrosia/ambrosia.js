@@ -7,13 +7,6 @@ export class Ambrosia {
             'Content-Type': 'application/json'
         }
     };
-    
-    constructor() {
-        axios.interceptors.request.use(request => {
-            console.log('Starting Request', request)
-            return request
-          });
-    }
 
     getRecipes() {
        return axios.get('/recipes', this.AxiosConfig);

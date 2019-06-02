@@ -29,7 +29,7 @@ export default {
         })
         .catch(err => {
           console.log("error" + err);
-        }).bind(this);
+        });
     }
   },
   mounted: function() {

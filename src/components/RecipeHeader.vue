@@ -3,19 +3,21 @@
     <h1 class="name">{{recipe.name}}</h1>
     <h5 class="author">{{recipe.author}}</h5>
     <div class="tags">
-      <span class="tag" v-for="tag in recipe.tags" v-bind:key="tag">{{tag}}</span>
+      <a class="tag pure-button" v-for="tag in recipe.tags" v-bind:key="tag" v-on:click="goToTag(tag)">#{{tag}}</a>
     </div>
     <p class="notes">{{recipe.notes}}</p>
   </div>
 </template>
 
 <script>
-import Stage from '../components/Stage';
-
 export default {
   name: "RecipeHeader",
-  components: {Stage},
-  props: ["recipe"]
+  props: ["recipe"],
+  methods: {
+    goToTag: function(event) {
+      console.log(event);
+    }
+  }
 }
 </script>
 
@@ -32,9 +34,18 @@ export default {
   font-size: 0.8em;
   font-style: italic;
   margin-bottom: 3vh;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   
   .tag {
-    margin-right: 1vw;
+    margin: 1%;
+    padding: 2%;
+    background: $theme;
+    border: 1px solid $purple;
+    color: $theme-font;
+    border-radius: 4px;
   }
 }
  

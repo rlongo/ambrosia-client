@@ -15,6 +15,6 @@ export default {
 <style lang="scss" scoped>
 .step {
     text-align: justify;
-    margin-bottom: 1vh;
+    margin: 0 5vw 1vh 0;
 }
 </style>
