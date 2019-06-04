@@ -32,8 +32,8 @@ export default class Ingredient {
   }
   
   static MultiMerge(lists) {
-    var ingredients = new Map();
-    var merged_list = new Array();
+    let ingredients = new Map();
+    let merged_list = new Array();
   
     lists.forEach(sublist => {
       sublist.forEach(element => {

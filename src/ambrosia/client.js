@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export class Ambrosia {
+export class Client {
     AxiosConfig = {
         baseURL: "http://127.0.0.1:8000/api/v1",
         headers: {
