@@ -41,7 +41,13 @@ export default {
   
   .tag {
     margin: 1%;
-    padding: 2%;
+    padding: 1%;
+
+    @media screen and (min-width: 64em) {
+      padding: 10px;
+      margin: 5px;
+    }
+
     background: $theme;
     border: 1px solid $purple;
     color: $theme-font;
