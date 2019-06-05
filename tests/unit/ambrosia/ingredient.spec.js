@@ -23,7 +23,6 @@ describe("Ingredient Merging", () => {
 });
 
 describe("Ingredient List Merging", () => {
-
   it("merge produces a sorted set", () => {
     const parsley1 = new Ingredient("parsley", "mg", 8500);
     const chicken1 = new Ingredient("chicken", "g", 800);
@@ -53,7 +52,7 @@ describe("Ingredient List Merging", () => {
     const parsley3 = new Ingredient("parsley", "lb", 1);
     const cream3 = new Ingredient("cream", "l", 0.7);
     const list3 = [parsley3, cream3];
-    
+
     let merged_list = Ingredient.MultiMerge([list1, list2, list3]);
 
     expect(merged_list[0].quantity).toBeCloseTo(800);

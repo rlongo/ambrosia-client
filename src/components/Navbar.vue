@@ -83,7 +83,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 $animationTime: 0.5s;
 $nav-height: 3.2em;
 

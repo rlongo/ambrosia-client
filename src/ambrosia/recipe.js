@@ -7,4 +7,4 @@ export default class Recipe {
     this.tags = tags;
     this.stages = stages;
   }
-};
+}

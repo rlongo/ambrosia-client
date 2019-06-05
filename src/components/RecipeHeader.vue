@@ -1,29 +1,41 @@
 <template>
   <div class="recipe-info">
-    <h1 class="name">{{recipe.name}}</h1>
-    <h5 class="author">{{recipe.author}}</h5>
+    <h1 class="name">{{ myRecipe.name }}</h1>
+    <h5 class="author">{{ myRecipe.author }}</h5>
     <div class="tags">
-      <a class="tag pure-button" v-for="tag in recipe.tags" v-bind:key="tag" v-on:click="goToTag(tag)">#{{tag}}</a>
+      <a
+        class="tag pure-button"
+        v-for="tag in myRecipe.tags"
+        v-bind:key="tag"
+        v-on:click="goToTag(tag)"
+        >#{{ tag }}</a
+      >
     </div>
-    <p class="notes">{{recipe.notes}}</p>
+    <p class="notes">{{ myRecipe.notes }}</p>
   </div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
   name: "RecipeHeader",
-  props: ["recipe"],
+  computed: {
+    ...mapGetters({
+      myRecipe: "getRecipe"
+    })
+  },
   methods: {
     goToTag: function(event) {
       console.log(event);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .name {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .author {
@@ -38,7 +50,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  
+
   .tag {
     margin: 1%;
     padding: 1%;
@@ -54,7 +66,7 @@ export default {
     border-radius: 4px;
   }
 }
- 
+
 .notes {
   font-size: 0.9em;
   text-align: left;

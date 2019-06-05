@@ -5,4 +5,4 @@ export default class RecipeStage {
     this.ingredients = ingredients;
     this.steps = steps;
   }
-};
+}

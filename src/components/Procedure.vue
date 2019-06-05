@@ -1,7 +1,7 @@
 <template>
-    <ol class="procedure">
-        <li class="step" v-for="step in steps" v-bind:key="step">{{step}}</li>
-    </ol>
+  <ol class="procedure">
+    <li class="step" v-for="step in steps" v-bind:key="step">{{ step }}</li>
+  </ol>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
 
 <style lang="scss" scoped>
 .step {
-    text-align: justify;
-    margin: 0 5vw 1vh 0;
+  text-align: justify;
+  margin: 0 5vw 1vh 0;
 }
 </style>

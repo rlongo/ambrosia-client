@@ -1,16 +1,16 @@
 <template>
   <form class="pure-form pure-form-aligned">
-    <StageForm ></StageForm>
+    <StageForm></StageForm>
   </form>
 </template>
 
 <script>
-import StageForm from '../components/Stage.Form';
+import StageForm from "../components/Stage.Form";
 
 export default {
   name: "Recipe",
-  components: { StageForm },
-}
+  components: { StageForm }
+};
 </script>
 
 <style lang="scss" scoped>

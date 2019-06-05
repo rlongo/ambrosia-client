@@ -1,30 +1,31 @@
 <template>
   <div v-if="isLoaded" class="home">
-    <Recipe v-bind:recipe="myRecipe" v-bind:key="myRecipe.name"></Recipe>
+    <Recipe></Recipe>
   </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import Recipe from "./Recipe";
-import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: "home",
   components: {
     Recipe
   },
-  computed: {...mapGetters({
-      loading: 'getIsLoading',
-      myRecipe: 'getRecipe'
+  computed: {
+    ...mapGetters({
+      loading: "getIsLoading",
+      myRecipe: "getRecipe"
     })
   },
   methods: {
     isLoaded: function() {
-      return !loading;
+      return !this.loading;
     },
     ...mapActions({
-      loadRecipe: 'getRecipe'
-    }),
+      loadRecipe: "getRecipe"
+    })
   },
   mounted: function() {
     this.loadRecipe();
