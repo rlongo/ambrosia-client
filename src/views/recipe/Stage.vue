@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import Ingredients from "../components/Ingredients";
-import Steps from "../components/Procedure";
+import Ingredients from "./Ingredients";
+import Steps from "./Procedure";
 
 export default {
   name: "Stage",

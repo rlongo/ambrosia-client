@@ -20,12 +20,12 @@ export default new Router({
     {
       path: "/recipe",
       name: "recipe",
-      component: () => import("./views/Recipe.vue")
+      component: () => import("./views/recipe/Recipe.vue")
     },
     {
       path: "/recipe/new",
       name: "add recipe",
-      component: () => import("./views/Recipe.Form.vue")
+      component: () => import("./views/new-recipe/Recipe.Form.vue")
     }
   ]
 });

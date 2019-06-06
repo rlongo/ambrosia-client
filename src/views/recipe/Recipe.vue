@@ -11,8 +11,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import RecipeHeader from "../components/RecipeHeader";
-import Stage from "../components/Stage";
+import RecipeHeader from "./RecipeHeader";
+import Stage from "./Stage";
 
 export default {
   name: "Recipe",

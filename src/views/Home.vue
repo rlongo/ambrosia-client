@@ -6,7 +6,7 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import Recipe from "./Recipe";
+import Recipe from "./recipe/Recipe";
 
 export default {
   name: "home",

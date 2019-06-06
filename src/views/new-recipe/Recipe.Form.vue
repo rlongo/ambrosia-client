@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import StageForm from "../components/Stage.Form";
+import StageForm from "./Stage.Form";
 
 export default {
   name: "Recipe",
