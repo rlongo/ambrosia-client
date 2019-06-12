@@ -1,18 +1,46 @@
 <template>
-  <multi-field v-on:addField="addField" v-on:removeField="removeField">
-    <template v-slot:header>
-      <h1>Stages</h1>
-    </template>
+  <div>
+    <h1>Stage</h1>
 
-    <template v-slot:default="slotProps">
-      <textarea
-        class="pure-u-1"
-        type="text"
-        v-model="steps[slotProps.rowid]"
-        placeholder="i.e. easter cookie baking biscotti lemon"
-      />
-    </template>
-  </multi-field>
+    <div class="pure-control-group">
+      <label>Notes</label>
+      <textarea type="text" placeholder="recipe notes" />
+    </div>
+
+    <multi-field
+      v-on:addField="addIngredient"
+      v-on:removeIngredient="removeStep"
+    >
+      <template v-slot:header>
+        <h3>Ingredients</h3>
+      </template>
+
+      <template v-slot:default="slotProps">
+        <input
+          type="text"
+          v-model="ingredients[slotProps.rowid]"
+          placeholder="i.e. 120g sugar, pinch tumeric, 30 Kg flour"
+        />
+      </template>
+      <template v-slot:footer>
+        Add Another Ingredient
+      </template>
+    </multi-field>
+
+    <multi-field v-on:addField="addStep" v-on:removeField="removeStep">
+      <template v-slot:header>
+        <h3>Steps</h3>
+      </template>
+
+      <template v-slot:default="slotProps">
+        <input type="text" v-model="steps[slotProps.rowid]" />
+      </template>
+
+      <template v-slot:footer>
+        Add Another Step
+      </template>
+    </multi-field>
+  </div>
 </template>
 
 <script>
@@ -22,18 +50,25 @@ export default {
   name: "Procedure",
   data: function() {
     return {
-      steps: []
+      steps: [],
+      ingredients: []
     };
   },
   components: {
     MultiField
   },
   methods: {
-    addField: function() {
+    addStep: function() {
       this.steps.push("");
     },
-    removeField: function(index) {
+    removeStep: function(index) {
       this.steps.splice(index, 1);
+    },
+    addIngredient: function() {
+      this.ingredients.push("");
+    },
+    removeIngredient: function(index) {
+      this.ingredients.splice(index, 1);
     }
   }
 };

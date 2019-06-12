@@ -7,7 +7,10 @@
       v-for="i in numFields"
       v-bind:key="i"
     >
-      <slot v-bind:rowid="i - 1"></slot>
+      <div class="content">
+        <slot v-bind:rowid="i - 1"></slot>
+      </div>
+
       <button
         class="pure-button"
         @click="removeField(i)"
@@ -56,7 +59,7 @@ export default {
   display: flex;
   margin: 3px;
 
-  * {
+  .content {
     flex: 1;
     margin: 4px;
   }
