@@ -1,4 +1,4 @@
-const ConvertUnit = require('convert-units');
+const ConvertUnit = require("convert-units");
 
 export default class Ingredient {
   constructor(name, unit, quantity) {

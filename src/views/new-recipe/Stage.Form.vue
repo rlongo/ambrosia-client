@@ -1,44 +1,40 @@
 <template>
-  <fieldset class="procedure-form">
-    <h3>Stage 1</h3>
+  <multi-field v-on:addField="addField" v-on:removeField="removeField">
+    <template v-slot:header>
+      <h1>Stages</h1>
+    </template>
 
-    <div class="pure-control-group">
-      <label for="name">Name</label>
-      <input id="name" type="text" placeholder="Recipe Name" />
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
-    <div class="pure-control-group">
-      <label for="name">Author</label>
-      <input id="name" type="text" placeholder="Author Name" />
-      <span class="pure-form-message-inline">This is a required field.</span>
-    </div>
-    <div class="pure-control-group">
-      <label for="name">Tags</label>
+    <template v-slot:default="slotProps">
       <textarea
-        id="name"
+        class="pure-u-1"
         type="text"
+        v-model="steps[slotProps.rowid]"
         placeholder="i.e. easter cookie baking biscotti lemon"
       />
-      <span class="pure-form-message-inline">Separate with spaces</span>
-    </div>
-  </fieldset>
+    </template>
+  </multi-field>
 </template>
 
 <script>
+import MultiField from "../../components/MultiField";
+
 export default {
   name: "Procedure",
-  components: {}
+  data: function() {
+    return {
+      steps: []
+    };
+  },
+  components: {
+    MultiField
+  },
+  methods: {
+    addField: function() {
+      this.steps.push("");
+    },
+    removeField: function(index) {
+      this.steps.splice(index, 1);
+    }
+  }
 };
 </script>
-
-<style lang="scss" scoped>
-input,
-textarea {
-  background: none;
-  border: 2px solid $theme-font !important;
-
-  @media screen and (max-width: 35.5em) {
-    width: 100%;
-  }
-}
-</style>

@@ -7,7 +7,7 @@
     >
       <div class="pure-u-1 pure-u-md-1-2">
         <div class="pure-menu">
-          <a href="#" class="pure-menu-heading custom-brand">Ambrosia</a>
+          <a href="/" class="pure-menu-heading custom-brand">Ambrosia</a>
           <a
             href="#"
             class="custom-toggle"
@@ -26,10 +26,10 @@
         >
           <ul class="pure-menu-list">
             <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link nav-link">About</a>
+              <a href="/recipe/new" class="pure-menu-link nav-link">New</a>
             </li>
             <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link nav-link">Cart</a>
+              <a href="/" class="pure-menu-link nav-link">Cart</a>
             </li>
           </ul>
         </div>
