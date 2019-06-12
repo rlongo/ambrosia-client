@@ -15,8 +15,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      loading: "getIsLoading",
-      myRecipe: "getRecipe"
+      loading: "ambrosia/getIsLoading",
+      myRecipe: "ambrosia/getRecipe"
     })
   },
   methods: {
@@ -24,7 +24,7 @@ export default {
       return !this.loading;
     },
     ...mapActions({
-      loadRecipe: "getRecipe"
+      loadRecipe: "ambrosia/getRecipe"
     })
   },
   mounted: function() {

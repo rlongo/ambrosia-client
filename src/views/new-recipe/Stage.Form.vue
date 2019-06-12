@@ -4,7 +4,7 @@
 
     <div class="pure-control-group">
       <label>Notes</label>
-      <textarea type="text" placeholder="recipe notes" />
+      <textarea type="text" placeholder="notes" />
     </div>
 
     <multi-field
@@ -19,7 +19,7 @@
         <input
           type="text"
           v-model="ingredients[slotProps.rowid]"
-          placeholder="i.e. 120g sugar, pinch tumeric, 30 Kg flour"
+          placeholder="<qty> <unit> <name>"
         />
       </template>
       <template v-slot:footer>

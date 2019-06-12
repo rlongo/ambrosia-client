@@ -22,7 +22,7 @@ export default {
   name: "RecipeHeader",
   computed: {
     ...mapGetters({
-      myRecipe: "getRecipe"
+      myRecipe: "ambrosia/getRecipe"
     })
   },
   methods: {

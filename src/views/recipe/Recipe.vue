@@ -19,7 +19,7 @@ export default {
   components: { RecipeHeader, Stage },
   computed: {
     ...mapGetters({
-      myRecipe: "getRecipe"
+      myRecipe: "ambrosia/getRecipe"
     })
   }
 };

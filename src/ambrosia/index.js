@@ -1,11 +1,5 @@
-import Vue from "vue";
-import Vuex from "vuex";
 import Recipe from "./recipe";
 import { Client } from "./client";
-
-Vue.use(Vuex);
-
-const debug = process.env.NODE_ENV !== "production";
 
 const state = {
   loading: false,
@@ -51,10 +45,9 @@ const mutations = {
   }
 };
 
-export default new Vuex.Store({
+export default {
   state,
   getters,
   actions,
-  mutations,
-  strict: debug
-});
+  mutations
+};
