@@ -2,7 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 import App from "./App.vue";
 import router from "./router";
-import Ambrosia from "./ambrosia";
+import { Fetch, Scratchpad } from "./ambrosia";
 import "./registerServiceWorker";
 
 Vue.use(Vuex);
@@ -12,7 +12,11 @@ const store = new Vuex.Store({
   modules: {
     ambrosia: {
       namespaced: true,
-      ...Ambrosia
+      ...Fetch
+    },
+    scratchpad: {
+      namespaced: true,
+      ...Scratchpad
     }
   },
   strict: process.env.NODE_ENV !== 'production'

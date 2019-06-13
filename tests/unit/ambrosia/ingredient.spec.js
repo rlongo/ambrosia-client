@@ -1,4 +1,15 @@
-import Ingredient from "@/ambrosia/ingredient";
+// import Ingredient from "@/ambrosia/ingredient";
+const Ingredient = require('@/ambrosia/ingredient');
+
+describe("Ingredient Parsing", () => {
+  it("120ml water", () => {
+    const input = "120ml water";
+    const ingredient = Ingredient.ParseIngredientString(input);
+    expect(ingredient.name).toBe("water");
+    expect(ingredient.unit).toBe("ml");
+    expect(ingredient.quantity).toBe(120);
+  });
+});
 
 describe("Ingredient Conversion", () => {
   it("correctly converts units", () => {
