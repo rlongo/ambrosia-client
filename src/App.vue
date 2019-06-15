@@ -7,7 +7,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          <strong>Ambrosia</strong> by
+          <strong>Ambrosia</strong> made with <font-awesome-icon class="made-with-love" icon="heart" /> by
           <a href="https://github.com/rlongo/ambrosia-client">rlongo</a>.
         </p>
 
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background: $theme;
+.made-with-love {
+  color: $red;
 }
 </style>
