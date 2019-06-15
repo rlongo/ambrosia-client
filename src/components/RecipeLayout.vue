@@ -15,7 +15,7 @@
         <br />
 
         <div class="columns is-desktop">
-          <div class="column is-one-third">
+          <div class="column is-full-tablet is-one-third-desktop">
             <slot name="ingredients" v-bind:idStage="i - 1"></slot>
           </div>
           <div class="column">

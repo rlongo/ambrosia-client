@@ -79,18 +79,22 @@
         <template v-slot:ingredients="slotProps">
           <h3 class="title">Ingredients</h3>
 
-          <div class="field">
-            <div class="control has-icons-right">
-              <input class="input" type="text" placeholder="qty unit name" />
+          <div class="field has-addons">
+            <div class="control ingredient-qty">
+              <input class="input" type="text" placeholder="qty">
+            </div>
+            <div class="control ingredient-unit">
+              <input class="input" type="text" placeholder="unit">
+            </div>
+            <div class="control has-icons-right is-expanded">
+              <input class="input" type="text" placeholder="name" />
               <span class="icon is-medium is-right">
                 <a class="delete"></a>
               </span>
             </div>
-            <br />
-            <div class="control">
-              <a class="button is-success">Add Ingredient</a>
-            </div>
           </div>
+
+          <a class="button is-success">Add Ingredient</a>
         </template>
 
         <template v-slot:steps="slotProps">
@@ -153,5 +157,12 @@ export default {
 // Little hack to make the tags play nice
 .tags-parent {
   margin-bottom: calc(2 * #{$size-7}) !important;
+}
+
+.ingredient-qty {
+  max-width: 3rem;
+}
+.ingredient-unit {
+  max-width: 4rem;
 }
 </style>
