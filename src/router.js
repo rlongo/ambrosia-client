@@ -16,7 +16,7 @@ export default new Router({
     {
       path: "/recipe",
       name: "recipe",
-      component: () => import("./views/recipe/Recipe.vue")
+      component: () => import("./views/Recipe.vue")
     },
     {
       path: "/recipe/new",
