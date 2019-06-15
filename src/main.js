@@ -2,9 +2,10 @@ import Vue from "vue";
 import Vuex from "vuex";
 import App from "./App.vue";
 import router from "./router";
-import { Fetch, Scratchpad } from "./ambrosia";
 import "./registerServiceWorker";
 
+import { Fetch, Scratchpad } from "./ambrosia";
+ 
 Vue.use(Vuex);
 Vue.config.productionTip = false;
 

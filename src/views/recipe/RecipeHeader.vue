@@ -62,7 +62,7 @@ export default {
 
     background: $theme;
     border: 1px solid $purple;
-    color: $theme-font;
+    // color: $theme-font;
     border-radius: 4px;
   }
 }

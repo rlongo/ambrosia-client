@@ -32,12 +32,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-input,
-textarea {
-  background: none;
-  border: 2px solid $theme-font !important;
+// input,
+// textarea {
+//   background: none;
+//   border: 2px solid $theme-font !important;
 
-  margin: 2%;
-  width: 96%;
-}
+//   margin: 2%;
+//   width: 96%;
+// }
 </style>

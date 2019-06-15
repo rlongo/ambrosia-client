@@ -30,7 +30,7 @@ export default {
 }
 
 .ingredient {
-  border-bottom: 1px solid $theme-font;
+  // border-bottom: 1px solid $theme-font;
 
   .name {
     font-size: 1.2em;

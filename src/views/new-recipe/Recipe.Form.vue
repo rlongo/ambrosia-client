@@ -52,7 +52,7 @@ form {
 input,
 textarea {
   background: none;
-  border: 2px solid $theme-font !important;
+  // border: 2px solid $theme-font !important;
   width: 100%;
 }
 </style>

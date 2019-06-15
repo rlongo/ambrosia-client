@@ -1,24 +1,26 @@
 <template>
   <div id="app">
-    <Navbar />
+    <navbar />
     <router-view />
   </div>
 </template>
 
 <script>
-import Navbar from "./components/Navbar";
+import navbar from "./components/Navbar";
 
 export default {
   name: "App",
   components: {
-    Navbar
+    navbar
   }
 };
 </script>
 
 <style lang="scss">
+
+
 body {
   background: $theme;
-  color: $theme-font;
+  // color: $theme-font;
 }
 </style>

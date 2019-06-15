@@ -1,4 +1,7 @@
 // We need this to overcome inability to have more that one scss in vue.config.js
 
-@import './fonts';
-@import './palette';
+@import './color';
+
+// This has to be last!
+@import "~bulma/bulma.sass";
+@import "~bulma-prefers-dark/bulma-prefers-dark.sass";
