@@ -6,5 +6,12 @@ export default class Recipe {
     this.notes = notes;
     this.tags = tags;
     this.stages = stages;
+
+    if (this.tags===undefined) {
+      this.tags = [];
+    }
+    if (this.stages===undefined) {
+      this.stages = [];
+    }
   }
 }

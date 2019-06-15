@@ -77,7 +77,7 @@ export default {
       return !this.loading;
     },
     ...mapActions({
-      loadRecipe: "ambrosia/getRecipe"
+      loadRecipe: "ambrosia/loadRecipe"
     }),
     getNumStages: function() {
       if (this.loading) {

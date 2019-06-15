@@ -1,5 +1,6 @@
 <template>
   <div class="recipe-layout">
+
     <div class="header">
       <slot name="header"></slot>
     </div>
@@ -24,6 +25,11 @@
         </div>
       </div>
     </div>
+
+    <div class="recipe-footer">
+      <slot name="recipe-footer"></slot>
+    </div>
+    
   </div>
 </template>
 

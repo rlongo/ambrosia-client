@@ -16,7 +16,7 @@ const getters = {
 };
 
 const actions = {
-  getRecipe(context) {
+  loadRecipe(context) {
     context.commit("setLoading", true);
 
     let a = new Client();

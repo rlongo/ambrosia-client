@@ -12,26 +12,42 @@
             <div class="field-label is-normal">
               <label class="label">Stage {{ slotProps.idStage + 1 }}</label>
             </div>
-            <div class="field-body">
+            <!-- TODO add in stage name and notes
+              <div class="field-body">
               <div class="field">
                 <div class="control">
                   <textarea
                     class="textarea"
                     rows="2"
                     placeholder="stage summary"
+                    v-model="stageSummary[slotProps.idStage]"
+                    v-on:change="onStageMetaChanged(slotProps.idStage)"
                   ></textarea>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </template>
 
         <template v-slot:ingredients="slotProps">
-          <recipe-form-ingredients class=""></recipe-form-ingredients>
+          <recipe-form-ingredients :idStage="slotProps.idStage"></recipe-form-ingredients>
         </template>
 
         <template v-slot:steps="slotProps">
-          <recipe-form-steps class=""></recipe-form-steps>
+          <recipe-form-steps :idStage="slotProps.idStage"></recipe-form-steps>
+        </template>
+
+          <template v-slot:recipe-footer>
+            <div class="field">
+              <div class="control">
+                <a class="button is-success is-pulled-right" @click="addStage">Add Stage</a>
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button class="button is-link is-large" @click="submitRecipe">Submit</button>
+              </div>
+            </div>
         </template>
       </recipe-layout>
     </form>
@@ -39,7 +55,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapGetters, mapActions } from "vuex";
+import Recipe from "../ambrosia/recipe";
 import RecipeLayout from "../components/RecipeLayout";
 import RecipeFormHeader from "./recipe/Header.Form"
 import RecipeFormIngredients from "./recipe/Ingredients.Form"
@@ -53,20 +70,43 @@ export default {
     'recipe-form-ingredients': RecipeFormIngredients,
     'recipe-form-steps': RecipeFormSteps
   },
-  computed: {},
+  data() {
+    return {
+    };
+  },
+  computed: {
+    ...mapGetters({
+      myRecipe: "scratchpad/getRecipe"
+    })
+  },
   methods: {
     ...mapActions({
-      loadRecipe: "ambrosia/getRecipe"
+      setScratchpad: "scratchpad/setScratchpad",
+      addStage: "scratchpad/addRecipeStage"
     }),
     getNumStages: function() {
-      return 3;
+      if (!Array.isArray(this.myRecipe.stages)) {
+        return 0;
+      }
+
+      return this.myRecipe.stages.length;
+    },
+    appendStage: function(){
+
+    },
+    submitRecipe: function() {
+      console.log("Posting Recipe");
     }
   },
   data() {
     return {
     };
   },
-  mounted: function() {
+  created: function() {
+    // TODO will want a way of passing in a recipe here instead of starting from scratch
+    this.setScratchpad(new Recipe());
+    this.addStage();
+    
   }
 };
 </script>

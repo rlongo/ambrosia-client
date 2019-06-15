@@ -1,36 +1,83 @@
 import Recipe from "./recipe";
 import Stage from "./stage";
-import ingredient from "./ingredient";
-import Ingredient from "./ingredient";
 
 const state = {
   recipe: new Recipe()
 };
 
-const getters = {};
-
-const actions = {};
+const getters = {
+  getRecipe(state) {
+    return state.recipe;
+  }
+};
 
 const mutations = {
-  setName(state, name) {
+  mSetRecipe(state, recipe) {
+    state.recipe = recipe;
+  },
+  
+  // RECIPE
+  mSetRecipeName(state, name) {
     state.recipe.name = name;
   },
-  setAuthor(state, author) {
+  mSetRecipeAuthor(state, author) {
     state.recipe.author = author;
   },
-  setTags(state, tags) {
-    state.recipe.tags = tags.toLowerCase().split(" ");
+  mSetRecipeTags(state, tags) {
+    state.recipe.tags = tags;
   },
-  setStage(state, stageIndex, name, notes, ingredients, steps) {
-    let ingredients_list = [];
+  mSetRecipeNotes(state, notes) {
+    state.recipe.notes = notes;
+  },
+  mAddRecipeStage(state) {
+    state.recipe.stages.push(new Stage());
+  },
 
-    for (let ingredient in ingredients) {
-      ingredients_list.push(Ingredient.ParseIngredientString(ingredient));
-    }
+  // STAGE DATA
+  mSetStageHeader(state, params) {
+    state.recipe.stages[params.stageID].name = params.name;
+    state.recipe.stages[params.stageID].notes = params.notes;
+  },
+  mSetStageIngredients(state, params) {
+    state.recipe.stages[params.stageID].ingredients = JSON.parse(JSON.stringify(params.ingredients));
+  },
+  mSetStageSteps(state, params) {
+    state.recipe.stages[params.stageID].steps = JSON.parse(JSON.stringify(params.steps));
+  },
+};
 
-    const stage = new Stage(name, notes, ingredients_list, steps);
-    state.recipe.stages[stageIndex] = stage;
-  }
+const actions = {
+  setScratchpad(context, recipe) {
+    context.commit("mSetRecipe", recipe);
+  },
+  
+  // RECIPE
+  setRecipeName(context, name) {
+    context.commit("mSetRecipeName", name);
+  },
+  setRecipeAuthor(context, author) {
+    context.commit("mSetRecipeAuthor", author);
+  },
+  setRecipeTags(context, tags) {
+    context.commit("mSetRecipeTags", tags);
+  },
+  setRecipeNotes(context, notes) {
+    context.commit("mSetRecipeNotes", notes);
+  },
+  addRecipeStage(context) { // Add a new stage to the list
+    context.commit("mAddRecipeStage");
+  },
+
+  // STAGE DATA
+  setStageHeader(context, params) {
+    context.commit("mSetStageHeader", params);
+  },
+  setStageIngredients(context, params) {
+    context.commit("mSetStageIngredients", params);
+  },
+  setStageSteps(context, params) {
+    context.commit("mSetStageSteps", params);
+  },
 };
 
 export default {
