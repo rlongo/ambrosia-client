@@ -1,45 +1,39 @@
 <template>
-<div class="recipe-layout">
+  <div class="recipe-layout">
     <div class="header">
-        <slot name="header"></slot>
+      <slot name="header"></slot>
     </div>
-    
 
     <div class="stages">
-        <div class="stage"
-            v-for="i in numStages"
-            v-bind:key="i">
+      <div class="stage" v-for="i in numStages" v-bind:key="i">
+        <hr />
 
-            <hr/>
-
-            <div>
-                <slot name="stage-header" v-bind:idStage="i - 1"></slot>
-            </div>
-
-            <br/>
-
-            <div class="columns is-desktop">
-                <div class="column is-one-third">
-                    <slot name="ingredients" v-bind:idStage="i - 1"></slot>
-                </div>
-                <div class="column">
-                    <slot name="steps" v-bind:idStage="i - 1"></slot>
-                </div>
-            </div>
+        <div>
+          <slot name="stage-header" v-bind:idStage="i - 1"></slot>
         </div>
+
+        <br />
+
+        <div class="columns is-desktop">
+          <div class="column is-one-third">
+            <slot name="ingredients" v-bind:idStage="i - 1"></slot>
+          </div>
+          <div class="column">
+            <slot name="steps" v-bind:idStage="i - 1"></slot>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: "recipe-layout",
-    props: {
-        numStages: Number
-    }
+  name: "recipe-layout",
+  props: {
+    numStages: Number
+  }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

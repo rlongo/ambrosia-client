@@ -5,7 +5,7 @@ import router from "./router";
 import "./registerServiceWorker";
 
 import { Fetch, Scratchpad } from "./ambrosia";
- 
+
 Vue.use(Vuex);
 Vue.config.productionTip = false;
 
@@ -20,7 +20,7 @@ const store = new Vuex.Store({
       ...Scratchpad
     }
   },
-  strict: process.env.NODE_ENV !== 'production'
+  strict: process.env.NODE_ENV !== "production"
 });
 
 new Vue({

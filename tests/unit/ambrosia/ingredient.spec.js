@@ -1,5 +1,5 @@
 // import Ingredient from "@/ambrosia/ingredient";
-const Ingredient = require('@/ambrosia/ingredient');
+const Ingredient = require("@/ambrosia/ingredient");
 
 describe("Ingredient Parsing", () => {
   it("120ml water", () => {

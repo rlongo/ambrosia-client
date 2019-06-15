@@ -1,7 +1,6 @@
 <template>
   <div v-if="isLoaded()" class="container">
     <recipe-layout v-bind:numStages="getNumStages()">
-
       <template v-slot:header>
         <h1 class="title">{{ myRecipe.name }}</h1>
         <h5 class="subtitle">{{ myRecipe.author }}</h5>
@@ -17,30 +16,43 @@
         <p class="notes">{{ myRecipe.notes }}</p>
       </template>
 
-       <template v-slot:stage-header="slotProps">
-        <h2 class="title is-3">{{ myRecipe.stages[slotProps.idStage].name }}</h2>
-        <h5 class="subtitle is-6"> {{ myRecipe.stages[slotProps.idStage].notes }}</h5>
+      <template v-slot:stage-header="slotProps">
+        <h2 class="title is-3">
+          {{ myRecipe.stages[slotProps.idStage].name }}
+        </h2>
+        <h5 class="subtitle is-6">
+          {{ myRecipe.stages[slotProps.idStage].notes }}
+        </h5>
       </template>
 
-       <template v-slot:ingredients="slotProps">
+      <template v-slot:ingredients="slotProps">
         <table class="table is-striped is-narrow is-hoverable">
           <tbody>
-            <tr  v-for="ingredient in myRecipe.stages[slotProps.idStage].ingredients"
-                  v-bind:key="ingredient.name">
+            <tr
+              v-for="ingredient in myRecipe.stages[slotProps.idStage]
+                .ingredients"
+              v-bind:key="ingredient.name"
+            >
               <td>{{ ingredient.name }}</td>
-              <td>{{ ingredient.quantity }}  <i>{{ ingredient.unit }}</i></td>
+              <td>
+                {{ ingredient.quantity }} <i>{{ ingredient.unit }}</i>
+              </td>
             </tr>
           </tbody>
         </table>
       </template>
 
       <template v-slot:steps="slotProps">
-          <ol class="content">
-            <li class="step" v-for="step in myRecipe.stages[slotProps.idStage].steps"
-                v-bind:key="step">{{ step }}</li>
-          </ol>
+        <ol class="content">
+          <li
+            class="step"
+            v-for="step in myRecipe.stages[slotProps.idStage].steps"
+            v-bind:key="step"
+          >
+            {{ step }}
+          </li>
+        </ol>
       </template>
-    
     </recipe-layout>
   </div>
 </template>

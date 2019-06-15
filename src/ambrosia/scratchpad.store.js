@@ -7,11 +7,9 @@ const state = {
   recipe: new Recipe()
 };
 
-const getters = {
-};
+const getters = {};
 
-const actions = {
-};
+const actions = {};
 
 const mutations = {
   setName(state, name) {
@@ -23,7 +21,7 @@ const mutations = {
   setTags(state, tags) {
     state.recipe.tags = tags.toLowerCase().split(" ");
   },
-  setStage(state, stageIndex, name,  notes, ingredients, steps) {
+  setStage(state, stageIndex, name, notes, ingredients, steps) {
     let ingredients_list = [];
 
     for (let ingredient in ingredients) {

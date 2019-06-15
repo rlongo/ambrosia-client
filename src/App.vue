@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar />
-    <br/>
+    <br />
     <router-view />
   </div>
 </template>
@@ -18,10 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
-
-
 body {
   background: $theme;
-  // color: $theme-font;
 }
 </style>

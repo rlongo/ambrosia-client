@@ -14,17 +14,16 @@ export default class Ingredient {
   }
 
   static ParseIngredientString(ingredient) {
-    const regex = /^(\d+\s*)?((?:\w+\ *)+)$/gmi;
+    const regex = /^(\d+\s*)?((?:\w+\ *)+)$/gim;
     let qty = null;
 
     // All possible units: ConvertUnit.possibilities()
-  
+
     const match = regex.exec(ingredient);
-  
-    if (match!=null) {
+
+    if (match != null) {
       console.log(length(match));
     }
-  
   }
 
   static Merge(new_unit, ingredients) {
