@@ -1,8 +1,22 @@
 <template>
   <div id="app">
-    <navbar />
-    <br />
-    <router-view />
+    <navbar/>
+    <br>
+    <router-view/>
+    <br/>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Ambrosia</strong> by
+          <a href="https://github.com/rlongo/ambrosia-client">rlongo</a>.
+        </p>
+
+        <p>
+          The source code is licensed
+          <a href="https://raw.githubusercontent.com/rlongo/ambrosia-client/master/LICENSE">GNU General Public License v3.0</a>.
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 
