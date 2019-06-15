@@ -4,57 +4,7 @@
     <form>
       <recipe-layout v-bind:numStages="getNumStages()">
         <template v-slot:header>
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Overview</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <input class="input" type="text" placeholder="Name" />
-                </div>
-              </div>
-              <div class="field">
-                <div class="control">
-                  <input class="input" type="text" placeholder="Author" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="field is-horizontal tags-parent">
-            <div class="field-label"></div>
-            <div class="field-body">
-              <div class="field is-expanded">
-                <div class="field has-addons">
-                  <p class="control is-expanded">
-                    <input
-                      class="input"
-                      type="tags"
-                      placeholder="Add Tag (press enter)"
-                    />
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="field is-horizontal">
-            <div class="field-label"></div>
-            <div class="field-body">
-              <div class="field is-expanded">
-                <div class="field has-addons">
-                  <p class="control is-expanded">
-                    <textarea
-                      class="textarea"
-                      rows="3"
-                      placeholder="recipe summary"
-                    ></textarea>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+            <recipe-form-header></recipe-form-header>
         </template>
 
         <template v-slot:stage-header="slotProps">
@@ -77,44 +27,11 @@
         </template>
 
         <template v-slot:ingredients="slotProps">
-          <h3 class="title">Ingredients</h3>
-
-          <div class="field has-addons">
-            <div class="control ingredient-qty">
-              <input class="input" type="text" placeholder="qty">
-            </div>
-            <div class="control ingredient-unit">
-              <input class="input" type="text" placeholder="unit">
-            </div>
-            <div class="control has-icons-right is-expanded">
-              <input class="input" type="text" placeholder="name" />
-              <span class="icon is-medium is-right">
-                <a class="delete"></a>
-              </span>
-            </div>
-          </div>
-
-          <a class="button is-success">Add Ingredient</a>
+          <recipe-form-ingredients class=""></recipe-form-ingredients>
         </template>
 
         <template v-slot:steps="slotProps">
-          <h3 class="title">Steps</h3>
-          <div class="field">
-            <div class="control has-icons-right">
-              <textarea
-                class="textarea"
-                rows="2"
-                placeholder="steps summary"
-              ></textarea>
-              <span class="icon is-medium is-right">
-                <a class="delete"></a>
-              </span>
-            </div>
-            <br />
-            <div class="control">
-              <a class="button is-success">Add Step</a>
-            </div>
-          </div>
+          <recipe-form-steps class=""></recipe-form-steps>
         </template>
       </recipe-layout>
     </form>
@@ -124,14 +41,17 @@
 <script>
 import { mapActions } from "vuex";
 import RecipeLayout from "../components/RecipeLayout";
-
-import BulmaTags from "bulma-tagsinput/dist/js/bulma-tagsinput.min.js";
-import "bulma-tagsinput/dist/css/bulma-tagsinput.sass";
+import RecipeFormHeader from "./recipe/Header.Form"
+import RecipeFormIngredients from "./recipe/Ingredients.Form"
+import RecipeFormSteps from "./recipe/Steps.Form.vue"
 
 export default {
   name: "recipe-form",
   components: {
-    RecipeLayout
+    RecipeLayout,
+    'recipe-form-header': RecipeFormHeader,
+    'recipe-form-ingredients': RecipeFormIngredients,
+    'recipe-form-steps': RecipeFormSteps
   },
   computed: {},
   methods: {
@@ -144,25 +64,9 @@ export default {
   },
   data() {
     return {
-      tags: []
     };
   },
   mounted: function() {
-    this.tags = BulmaTags.attach();
   }
 };
 </script>
-
-<style lang="scss" scoped>
-// Little hack to make the tags play nice
-.tags-parent {
-  margin-bottom: calc(2 * #{$size-7}) !important;
-}
-
-.ingredient-qty {
-  max-width: 3rem;
-}
-.ingredient-unit {
-  max-width: 4rem;
-}
-</style>
