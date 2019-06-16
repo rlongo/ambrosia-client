@@ -25,10 +25,12 @@ const actions = {
         if (response.data && response.data.length > 0) {
           context.commit("setRecipe", response.data[0]);
         }
-        context.commit("setLoading", false);
       })
       .catch(err => {
         console.log("error" + err);
+      })
+      .finally(() => {
+        context.commit("setLoading", false);
       });
   }
 };

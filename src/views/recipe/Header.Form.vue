@@ -7,12 +7,22 @@
       <div class="field-body">
         <div class="field">
           <div class="control">
-            <input class="input" type="text" v-model="name" placeholder="Name">
+            <input
+              class="input"
+              type="text"
+              v-model="name"
+              placeholder="Name"
+            />
           </div>
         </div>
         <div class="field">
           <div class="control">
-            <input class="input" type="text" v-model="author" placeholder="Author">
+            <input
+              class="input"
+              type="text"
+              v-model="author"
+              placeholder="Author"
+            />
           </div>
         </div>
       </div>
@@ -29,7 +39,7 @@
                 v-model="tag"
                 :tags="tags"
                 :allow-edit-tags="true"
-                @tags-changed="newTags => tags = newTags"
+                @tags-changed="newTags => (tags = newTags)"
               />
             </p>
           </div>
@@ -43,7 +53,12 @@
         <div class="field is-expanded">
           <div class="field has-addons">
             <p class="control is-expanded">
-              <textarea class="textarea" rows="3" v-model="notes" placeholder="recipe notes"></textarea>
+              <textarea
+                class="textarea"
+                rows="3"
+                v-model="notes"
+                placeholder="recipe notes"
+              ></textarea>
             </p>
           </div>
         </div>
@@ -105,14 +120,14 @@ export default {
       set(value) {
         this.setNotes(value);
       }
-    },
+    }
   },
   methods: {
     ...mapActions({
       setName: "scratchpad/setRecipeName",
       setAuthor: "scratchpad/setRecipeAuthor",
       setTags: "scratchpad/setRecipeTags",
-      setNotes: "scratchpad/setRecipeNotes",
+      setNotes: "scratchpad/setRecipeNotes"
     })
   },
   mounted: function() {
@@ -121,4 +136,3 @@ export default {
   }
 };
 </script>
-

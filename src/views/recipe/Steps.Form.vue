@@ -1,25 +1,23 @@
 <template>
   <div>
-      <h3 class="title">Steps</h3>
-      <div class="field"
-          v-for="(step, i) in steps"
-          v-bind:key="i">
-        <div class="control has-icons-right">
-          <textarea
-            class="textarea"
-            rows="2"
-            placeholder="steps summary"
-            v-model="steps[i]"
-            v-on:change="onStepsChanged"
-          ></textarea>
-          <span class="icon is-medium is-right">
-            <a class="delete" @click="removeStep(i)"></a>
-          </span>
-        </div>
+    <h3 class="title">Steps</h3>
+    <div class="field" v-for="(step, i) in steps" v-bind:key="i">
+      <div class="control has-icons-right">
+        <textarea
+          class="textarea"
+          rows="2"
+          placeholder="steps summary"
+          v-model="steps[i]"
+          v-on:change="onStepsChanged"
+        ></textarea>
+        <span class="icon is-medium is-right">
+          <a class="delete" @click="removeStep(i)"></a>
+        </span>
       </div>
-        <div class="control">
-          <a class="button is-success" @click="addStep()">Add Step</a>
-        </div>
+    </div>
+    <div class="control">
+      <a class="button is-success" @click="addStep()">Add Step</a>
+    </div>
   </div>
 </template>
 
@@ -39,7 +37,7 @@ export default {
   computed: {},
   methods: {
     ...mapActions({
-      storeSteps: "scratchpad/setStageSteps",
+      storeSteps: "scratchpad/setStageSteps"
     }),
     addStep() {
       this.steps.push("");
@@ -49,7 +47,7 @@ export default {
       this.onStepsChanged();
     },
     onStepsChanged() {
-      this.storeSteps({stageID: this.idStage, steps: this.steps});
+      this.storeSteps({ stageID: this.idStage, steps: this.steps });
     }
   }
 };

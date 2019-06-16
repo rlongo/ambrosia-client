@@ -1,7 +1,10 @@
 import Recipe from "./recipe";
 import Stage from "./stage";
+import { Client } from "./client";
 
 const state = {
+  inTransmission: false,
+  wasSuccessful: false,
   recipe: new Recipe()
 };
 
@@ -15,7 +18,14 @@ const mutations = {
   mSetRecipe(state, recipe) {
     state.recipe = recipe;
   },
-  
+
+  mSetTransmission(state, inTransmission) {
+    state.inTransmission = inTransmission;
+  },
+  mWasSuccessful(state, wasSuccessful) {
+    state.wasSuccessful = wasSuccessful;
+  },
+
   // RECIPE
   mSetRecipeName(state, name) {
     state.recipe.name = name;
@@ -39,18 +49,22 @@ const mutations = {
     state.recipe.stages[params.stageID].notes = params.notes;
   },
   mSetStageIngredients(state, params) {
-    state.recipe.stages[params.stageID].ingredients = JSON.parse(JSON.stringify(params.ingredients));
+    state.recipe.stages[params.stageID].ingredients = JSON.parse(
+      JSON.stringify(params.ingredients)
+    );
   },
   mSetStageSteps(state, params) {
-    state.recipe.stages[params.stageID].steps = JSON.parse(JSON.stringify(params.steps));
-  },
+    state.recipe.stages[params.stageID].steps = JSON.parse(
+      JSON.stringify(params.steps)
+    );
+  }
 };
 
 const actions = {
   setScratchpad(context, recipe) {
     context.commit("mSetRecipe", recipe);
   },
-  
+
   // RECIPE
   setRecipeName(context, name) {
     context.commit("mSetRecipeName", name);
@@ -64,7 +78,8 @@ const actions = {
   setRecipeNotes(context, notes) {
     context.commit("mSetRecipeNotes", notes);
   },
-  addRecipeStage(context) { // Add a new stage to the list
+  addRecipeStage(context) {
+    // Add a new stage to the list
     context.commit("mAddRecipeStage");
   },
 
@@ -78,6 +93,24 @@ const actions = {
   setStageSteps(context, params) {
     context.commit("mSetStageSteps", params);
   },
+
+  commitRecipe(context) {
+    context.commit("mSetTransmission", true);
+
+    let a = new Client();
+    a.postRecipe(JSON.parse(JSON.stringify(context.state.recipe)))
+      .then(response => {
+        console.log("response: " + response);
+        context.commit("mWasSuccessful", true);
+      })
+      .catch(err => {
+        console.log("error: " + err);
+        context.commit("mWasSuccessful", false);
+      })
+      .finally(() => {
+        context.commit("mSetTransmission", false);
+      });
+  }
 };
 
 export default {

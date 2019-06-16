@@ -7,10 +7,10 @@ export default class Recipe {
     this.tags = tags;
     this.stages = stages;
 
-    if (this.tags===undefined) {
+    if (this.tags === undefined) {
       this.tags = [];
     }
-    if (this.stages===undefined) {
+    if (this.stages === undefined) {
       this.stages = [];
     }
   }

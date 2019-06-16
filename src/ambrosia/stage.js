@@ -5,10 +5,10 @@ export default class RecipeStage {
     this.ingredients = ingredients;
     this.steps = steps;
 
-    if (this.ingredients===undefined) {
+    if (this.ingredients === undefined) {
       this.ingredients = [];
     }
-    if (this.steps===undefined) {
+    if (this.steps === undefined) {
       this.steps = [];
     }
   }

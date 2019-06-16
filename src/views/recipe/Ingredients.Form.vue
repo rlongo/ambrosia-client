@@ -1,31 +1,45 @@
 <template>
   <div>
-      <h3 class="title">Ingredients</h3>
+    <h3 class="title">Ingredients</h3>
 
-      <div class="field has-addons"
-          v-for="(ingredient, i) in ingredients"
-          v-bind:key="i">
-        <div class="control ingredient-qty">
-          <input class="input" type="number" 
-            v-model.number="ingredients[i].quantity"
-            v-on:change="onIngredientsChanged" placeholder="qty">
-        </div>
-        <div class="control ingredient-unit">
-          <input class="input" type="text"
-            v-model="ingredients[i].unit"
-            v-on:change="onIngredientsChanged" placeholder="unit">
-        </div>
-        <div class="control has-icons-right is-expanded">
-          <input class="input" type="text"
-            v-model="ingredients[i].name"
-            v-on:change="onIngredientsChanged" placeholder="name" />
-          <span class="icon is-medium is-right">
-            <a class="delete" @click="removeIngredient(i)"></a>
-          </span>
-        </div>
+    <div
+      class="field has-addons"
+      v-for="(ingredient, i) in ingredients"
+      v-bind:key="i"
+    >
+      <div class="control ingredient-qty">
+        <input
+          class="input"
+          type="number"
+          v-model.number="ingredients[i].quantity"
+          v-on:change="onIngredientsChanged"
+          placeholder="qty"
+        />
       </div>
+      <div class="control ingredient-unit">
+        <input
+          class="input"
+          type="text"
+          v-model="ingredients[i].unit"
+          v-on:change="onIngredientsChanged"
+          placeholder="unit"
+        />
+      </div>
+      <div class="control has-icons-right is-expanded">
+        <input
+          class="input"
+          type="text"
+          v-model="ingredients[i].name"
+          v-on:change="onIngredientsChanged"
+          placeholder="name"
+        />
+        <span class="icon is-medium is-right">
+          <a class="delete" @click="removeIngredient(i)"></a>
+        </span>
+      </div>
+    </div>
 
-      <a class="button is-success" @click="addIngredient()">Add Ingredient</a>
+    <a class="button is-success" @click="addIngredient()">Add Ingredient</a>
   </div>
 </template>
 
@@ -46,7 +60,7 @@ export default {
   computed: {},
   methods: {
     ...mapActions({
-      storeIngredients: "scratchpad/setStageIngredients",
+      storeIngredients: "scratchpad/setStageIngredients"
     }),
     addIngredient() {
       this.ingredients.push(new Ingredient());
@@ -56,9 +70,12 @@ export default {
       this.onIngredientsChanged();
     },
     onIngredientsChanged() {
-      this.storeIngredients({stageID: this.idStage, ingredients: this.ingredients});
+      this.storeIngredients({
+        stageID: this.idStage,
+        ingredients: this.ingredients
+      });
     }
-  },
+  }
 };
 </script>
 

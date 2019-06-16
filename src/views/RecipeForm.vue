@@ -4,7 +4,7 @@
     <form>
       <recipe-layout v-bind:numStages="getNumStages()">
         <template v-slot:header>
-            <recipe-form-header></recipe-form-header>
+          <recipe-form-header></recipe-form-header>
         </template>
 
         <template v-slot:stage-header="slotProps">
@@ -30,24 +30,30 @@
         </template>
 
         <template v-slot:ingredients="slotProps">
-          <recipe-form-ingredients :idStage="slotProps.idStage"></recipe-form-ingredients>
+          <recipe-form-ingredients
+            :idStage="slotProps.idStage"
+          ></recipe-form-ingredients>
         </template>
 
         <template v-slot:steps="slotProps">
           <recipe-form-steps :idStage="slotProps.idStage"></recipe-form-steps>
         </template>
 
-          <template v-slot:recipe-footer>
-            <div class="field">
-              <div class="control">
-                <a class="button is-success is-pulled-right" @click="addStage">Add Stage</a>
-              </div>
+        <template v-slot:recipe-footer>
+          <div class="field">
+            <div class="control">
+              <a class="button is-success is-pulled-right" @click="addStage"
+                >Add Stage</a
+              >
             </div>
-            <div class="field">
-              <div class="control">
-                <button class="button is-link is-large" @click="submitRecipe">Submit</button>
-              </div>
+          </div>
+          <div class="field">
+            <div class="control">
+              <a class="button is-link is-large" @click="submitRecipe"
+                >Submit</a
+              >
             </div>
+          </div>
         </template>
       </recipe-layout>
     </form>
@@ -58,21 +64,20 @@
 import { mapGetters, mapActions } from "vuex";
 import Recipe from "../ambrosia/recipe";
 import RecipeLayout from "../components/RecipeLayout";
-import RecipeFormHeader from "./recipe/Header.Form"
-import RecipeFormIngredients from "./recipe/Ingredients.Form"
-import RecipeFormSteps from "./recipe/Steps.Form.vue"
+import RecipeFormHeader from "./recipe/Header.Form";
+import RecipeFormIngredients from "./recipe/Ingredients.Form";
+import RecipeFormSteps from "./recipe/Steps.Form.vue";
 
 export default {
   name: "recipe-form",
   components: {
     RecipeLayout,
-    'recipe-form-header': RecipeFormHeader,
-    'recipe-form-ingredients': RecipeFormIngredients,
-    'recipe-form-steps': RecipeFormSteps
+    "recipe-form-header": RecipeFormHeader,
+    "recipe-form-ingredients": RecipeFormIngredients,
+    "recipe-form-steps": RecipeFormSteps
   },
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     ...mapGetters({
@@ -82,7 +87,8 @@ export default {
   methods: {
     ...mapActions({
       setScratchpad: "scratchpad/setScratchpad",
-      addStage: "scratchpad/addRecipeStage"
+      addStage: "scratchpad/addRecipeStage",
+      commitRecipe: "scratchpad/commitRecipe"
     }),
     getNumStages: function() {
       if (!Array.isArray(this.myRecipe.stages)) {
@@ -91,22 +97,15 @@ export default {
 
       return this.myRecipe.stages.length;
     },
-    appendStage: function(){
-
-    },
+    appendStage: function() {},
     submitRecipe: function() {
-      console.log("Posting Recipe");
+      this.commitRecipe();
     }
-  },
-  data() {
-    return {
-    };
   },
   created: function() {
     // TODO will want a way of passing in a recipe here instead of starting from scratch
     this.setScratchpad(new Recipe());
     this.addStage();
-    
   }
 };
 </script>
