@@ -1,5 +1,7 @@
 <template>
   <div v-if="isLoaded()" class="container">
+    <button class="button is-primary" @click="loadRecipe">Reload</button>
+
     <recipe-layout v-bind:numStages="getNumStages()">
       <template v-slot:header>
         <h1 class="title">{{ myRecipe.name }}</h1>
