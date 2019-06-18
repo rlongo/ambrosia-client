@@ -1,4 +1,17 @@
 // We need this to overcome inability to have more that one scss in vue.config.js
 
-@import './fonts';
-@import './palette';
+@import './color';
+
+// This has to be last!
+@import "~bulma/bulma.sass";
+@import "~bulma-prefers-dark/bulma-prefers-dark.sass";
+
+// Patches to make bulma work
+
+// Hide the input box of vue-tags-input
+.vue-tags-input .ti-input {
+    border: 0px !important;
+    width: 100%;
+    background: transparent;
+    padding: 0;
+}

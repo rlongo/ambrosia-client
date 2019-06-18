@@ -1,10 +1,10 @@
 module.exports = {
   moduleFileExtensions: ["js", "jsx", "json", "vue"],
   transform: {
+    "^.+\\.jsx?$": "babel-jest",
     "^.+\\.vue$": "vue-jest",
     ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$":
-      "jest-transform-stub",
-    "^.+\\.jsx?$": "babel-jest"
+      "jest-transform-stub"
   },
   transformIgnorePatterns: ["/node_modules/"],
   moduleNameMapper: {

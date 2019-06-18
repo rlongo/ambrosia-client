@@ -1,24 +1,42 @@
 <template>
   <div id="app">
-    <Navbar />
+    <navbar />
+    <br />
     <router-view />
+    <br />
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Ambrosia</strong> made with
+          <font-awesome-icon class="made-with-love" icon="heart" /> by
+          <a href="https://github.com/rlongo/ambrosia">rlongo</a>.
+        </p>
+
+        <p>
+          The source code is licensed
+          <a
+            href="https://raw.githubusercontent.com/rlongo/ambrosia/master/LICENSE"
+            >GNU General Public License v3.0</a
+          >.
+        </p>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import Navbar from "./components/Navbar";
+import navbar from "./components/Navbar";
 
 export default {
   name: "App",
   components: {
-    Navbar
+    navbar
   }
 };
 </script>
 
 <style lang="scss">
-body {
-  background: $theme;
-  color: $theme-font;
+.made-with-love {
+  color: $red;
 }
 </style>
