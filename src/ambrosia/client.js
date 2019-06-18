@@ -21,7 +21,7 @@ export class Client {
 
     const payload = {
       method: "POST",
-      mode: "no-cors",
+      mode: "cors",
       cache: "no-cache",
       credentials: "omit",
       headers: {
