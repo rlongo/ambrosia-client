@@ -3,7 +3,7 @@ export class Client {
     this.apiRoot = "http://127.0.0.1:8000/api/v1";
   }
 
-  getRecipes() {
+  async getRecipes() {
     const url = this.apiRoot + "/recipes";
 
     const payload = {
@@ -13,10 +13,13 @@ export class Client {
       }
     };
 
-    return fetch(new Request(url, payload));
+    let response = await fetch(new Request(url, payload));
+    let recipes = await response.json();
+
+    return recipes;
   }
 
-  postRecipe(recipe) {
+  async postRecipe(recipe) {
     const url = this.apiRoot + "/recipe";
 
     const payload = {
@@ -32,6 +35,6 @@ export class Client {
       body: JSON.stringify(recipe)
     };
 
-    return fetch(new Request(url, payload));
+    await fetch(new Request(url, payload));
   }
 }

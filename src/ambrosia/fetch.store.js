@@ -21,9 +21,6 @@ const actions = {
 
     let a = new Client();
     a.getRecipes()
-      .then(response => {
-        return response.json();
-      })
       .then(recipes => {
         if (recipes.length > 0) {
           context.commit("setRecipe", recipes[0]);
