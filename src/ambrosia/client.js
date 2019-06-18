@@ -4,34 +4,34 @@ export class Client {
   }
 
   getRecipes() {
-    const url = this.apiRoot + '/recipes';
-    
+    const url = this.apiRoot + "/recipes";
+
     const payload = {
-      method: 'GET',
+      method: "GET",
       headers: {
-          'Content-Type': 'application/json',
-      },
+        "Content-Type": "application/json"
+      }
     };
 
     return fetch(new Request(url, payload));
   }
 
   postRecipe(recipe) {
-    const url = this.apiRoot + '/recipe';
-    
+    const url = this.apiRoot + "/recipe";
+
     const payload = {
-      method: 'POST',
-      mode: 'no-cors',
-      cache: 'no-cache',
-        credentials: 'omit',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        redirect: 'follow',
-        referrer: 'no-referrer',
-        body: JSON.stringify(recipe),
+      method: "POST",
+      mode: "no-cors",
+      cache: "no-cache",
+      credentials: "omit",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      redirect: "follow",
+      referrer: "no-referrer",
+      body: JSON.stringify(recipe)
     };
-  
+
     return fetch(new Request(url, payload));
   }
 }

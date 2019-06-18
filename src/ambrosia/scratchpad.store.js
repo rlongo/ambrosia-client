@@ -99,7 +99,7 @@ const actions = {
 
     let a = new Client();
     a.postRecipe(JSON.parse(JSON.stringify(context.state.recipe)))
-      .then(response => {
+      .then(() => {
         context.commit("mWasSuccessful", true);
       })
       .catch(err => {
