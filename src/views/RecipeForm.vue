@@ -1,5 +1,12 @@
 <template>
   <div class="container">
+
+    <notification class="status-notification" ref="notify">
+      <template>
+        {{ notifyContent }}
+      </template>
+    </notification>
+
     <h1 class="title is-1">New Recipe</h1>
     <form>
       <recipe-layout v-bind:numStages="getNumStages()">
@@ -64,6 +71,7 @@
 import { mapGetters, mapActions } from "vuex";
 import Recipe from "../ambrosia/recipe";
 import RecipeLayout from "../components/RecipeLayout";
+import Notification from "../components/Notification";
 import RecipeFormHeader from "./recipe/Header.Form";
 import RecipeFormIngredients from "./recipe/Ingredients.Form";
 import RecipeFormSteps from "./recipe/Steps.Form.vue";
@@ -72,16 +80,21 @@ export default {
   name: "recipe-form",
   components: {
     RecipeLayout,
+    "notification": Notification,
     "recipe-form-header": RecipeFormHeader,
     "recipe-form-ingredients": RecipeFormIngredients,
     "recipe-form-steps": RecipeFormSteps
   },
   data() {
-    return {};
+    return {
+      notifyContent: ""
+    };
   },
   computed: {
     ...mapGetters({
-      myRecipe: "scratchpad/getRecipe"
+      myRecipe: "scratchpad/getRecipe",
+      isInTransmission: "scratchpad/getIsTransmitting",
+      didPostSucceed: "scratchpad/getWasSuccessful",
     })
   },
   methods: {
@@ -97,15 +110,54 @@ export default {
 
       return this.myRecipe.stages.length;
     },
-    appendStage: function() {},
     submitRecipe: function() {
+      this.$refs.notify.cancel();
       this.commitRecipe();
+    },
+
+    notifyInTransmission() {
+        if (!this.$refs.notify.isActive()) {
+          this.notifyContent = "Trying to Serve Recipe on Ambrosia";
+          this.$refs.notify.show("warning");
+        }
+    },
+    notifyPostStatus() {
+      if (this.didPostSucceed) {
+          this.notifyContent = "Recipe served on Ambrosia";
+          this.$refs.notify.show("success");
+        } else {
+          this.notifyContent = "Failed to Serve Recipe to Ambrosia";
+          this.$refs.notify.show("fail");
+        }
     }
   },
   created: function() {
     // TODO will want a way of passing in a recipe here instead of starting from scratch
     this.setScratchpad(new Recipe());
     this.addStage();
+  },
+  watch: {
+    isInTransmission: function(val, oldVal) {
+      if (val) {
+        this.notifyInTransmission();
+      }
+    },
+    didPostSucceed: function(val, oldVal) {
+      this.notifyPostStatus();
+    },
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.status-notification {
+  position: absolute;
+  bottom: 20px;
+  left: 5%;
+  right: 5%;
+  min-height: 5%;
+  width: 90%;
+  z-index: 99;
+}
+</style>
+
