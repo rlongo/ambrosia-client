@@ -1,13 +1,13 @@
 import { Client } from "./client";
 
 const state = {
-  loading: false,
+  status: undefined, // one of: failed, loading, set
   recipes: []
 };
 
 const getters = {
-  getIsLoading(state) {
-    return state.loading;
+  getStatus(state) {
+    return state.status;
   },
   getRecipes(state) {
     return state.recipes;
@@ -15,19 +15,32 @@ const getters = {
 };
 
 const actions = {
-  loadRecipe(context, tags) {
-    context.commit("setLoading", true);
+  loadRecipes(context, tags) {
+    context.commit("setStatus", "loading");
 
     let a = new Client();
     a.getRecipes(tags)
       .then(recipes => {
         context.commit("setRecipes", recipes);
+        context.commit("setStatus", "set");
       })
       .catch(err => {
-        console.log("error" + err);
+        console.log("error " + err);
+        context.commit("setStatus", "failed");
+      });
+  },
+  loadRecipe(context, recipeID) {
+    context.commit("setStatus", "loading");
+
+    let a = new Client();
+    a.getRecipe(recipeID)
+      .then(recipes => {
+        context.commit("setRecipes", recipes);
+        context.commit("setStatus", "set");
       })
-      .finally(() => {
-        context.commit("setLoading", false);
+      .catch(err => {
+        console.log("error " + err);
+        context.commit("setStatus", "failed");
       });
   },
   clearRecipes(context) {
@@ -36,8 +49,8 @@ const actions = {
 };
 
 const mutations = {
-  setLoading(state, isLoading) {
-    state.loading = isLoading;
+  setStatus(state, status) {
+    state.status = status;
   },
   setRecipes(state, recipes) {
     state.recipes = recipes;

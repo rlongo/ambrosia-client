@@ -68,27 +68,41 @@ export default {
   },
   computed: {
     ...mapGetters({
-      loading: "ambrosia/getIsLoading",
-      myRecipe: "ambrosia/getRecipe"
-    })
+      status: "ambrosia/getStatus",
+      recipes: "ambrosia/getRecipes"
+    }),
+  },
+  data() {
+    return {
+    myRecipe: undefined
+    };
   },
   methods: {
     isLoaded: function() {
-      return !this.loading;
+      return this.status==="set";
     },
     ...mapActions({
-      loadRecipe: "ambrosia/loadRecipe"
+      loadRecipe: "ambrosia/loadRecipe",
     }),
     getNumStages: function() {
-      if (this.loading) {
+      if (!this.isLoaded()) {
         return 0;
       }
-
       return this.myRecipe.stages.length;
+    },
+    setMyRecipe: function() {
+        this.myRecipe = this.recipes[0];
     }
   },
   created: function() {
-    this.loadRecipe();
+    this.loadRecipe(this.$route.params.recipeID);
+  },
+  watch: {
+    status: function(val) {
+      if (val==="set") {
+        this.setMyRecipe();
+      }
+    }
   }
 };
 </script>

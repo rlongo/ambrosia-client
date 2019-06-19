@@ -34,12 +34,12 @@
         <a href="#" class="card-footer-item">
           Planner<font-awesome-icon icon="cart-plus"
         /></a>
-        <a href="#" class="card-footer-item"
+        <router-link :to="{ name: 'recipe', params: { recipeID: recipe._id }}" class="card-footer-item"
           >View<font-awesome-icon icon="file"
-        /></a>
-        <a href="#" class="card-footer-item"
+        /></router-link>
+        <router-link :to="{name: 'home'}" class="card-footer-item"
           >Edit<font-awesome-icon icon="edit"
-        /></a>
+        /></router-link>
       </footer>
     </div>
   </div>
@@ -66,18 +66,21 @@ export default {
   },
   methods: {
     ...mapActions({
-      loadRecipe: "ambrosia/loadRecipe",
+      loadRecipes: "ambrosia/loadRecipes",
       clearRecipes: "ambrosia/clearRecipes"
     }),
     onNewTags: function(tags) {
       tags = tags.map(t => t.text);
       if (tags.length > 0) {
-        this.loadRecipe(tags);
+        this.loadRecipes(tags);
       } else {
         this.clearRecipes();
       }
     }
-  }
+  },
+  created: function() {
+    this.clearRecipes();
+  },
 };
 </script>
 

@@ -33,6 +33,27 @@ export class Client {
     return recipes;
   }
 
+  async getRecipe(recipeID) {
+    if (recipeID === undefined) {
+      throw " recipeID cannot be undefined!!";
+    }
+
+    const url = new URL(this.apiRoot + "/recipe/" + recipeID);
+
+    const payload = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    };
+
+
+    let response = await fetch(new Request(url, payload));
+    let recipes = await response.json();
+
+    return [ recipes ];
+  }
+
   async postRecipe(recipe) {
     const url = this.apiRoot + "/recipe";
 
