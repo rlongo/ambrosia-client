@@ -1,30 +1,27 @@
-import Recipe from "./recipe";
 import { Client } from "./client";
 
 const state = {
   loading: false,
-  recipe: new Recipe()
+  recipes: []
 };
 
 const getters = {
   getIsLoading(state) {
     return state.loading;
   },
-  getRecipe(state) {
-    return state.recipe;
+  getRecipes(state) {
+    return state.recipes;
   }
 };
 
 const actions = {
-  loadRecipe(context) {
+  loadRecipe(context, tags) {
     context.commit("setLoading", true);
 
     let a = new Client();
-    a.getRecipes()
+    a.getRecipes(tags)
       .then(recipes => {
-        if (recipes.length > 0) {
-          context.commit("setRecipe", recipes[0]);
-        }
+        context.commit("setRecipes", recipes);
       })
       .catch(err => {
         console.log("error" + err);
@@ -32,6 +29,9 @@ const actions = {
       .finally(() => {
         context.commit("setLoading", false);
       });
+  },
+  clearRecipes(context) {
+    context.commit("clearRecipes");
   }
 };
 
@@ -39,11 +39,11 @@ const mutations = {
   setLoading(state, isLoading) {
     state.loading = isLoading;
   },
-  setRecipe(state, recipe) {
-    state.recipe = recipe;
+  setRecipes(state, recipes) {
+    state.recipes = recipes;
   },
-  clearRecipe(state) {
-    state.recipe = new Recipe();
+  clearRecipes(state) {
+    state.recipes = [];
   }
 };
 

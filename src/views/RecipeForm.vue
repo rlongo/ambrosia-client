@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <notification class="status-notification" ref="notify">
       <template>
         {{ notifyContent }}
@@ -80,7 +79,7 @@ export default {
   name: "recipe-form",
   components: {
     RecipeLayout,
-    "notification": Notification,
+    notification: Notification,
     "recipe-form-header": RecipeFormHeader,
     "recipe-form-ingredients": RecipeFormIngredients,
     "recipe-form-steps": RecipeFormSteps
@@ -94,7 +93,7 @@ export default {
     ...mapGetters({
       myRecipe: "scratchpad/getRecipe",
       isInTransmission: "scratchpad/getIsTransmitting",
-      didPostSucceed: "scratchpad/getWasSuccessful",
+      didPostSucceed: "scratchpad/getWasSuccessful"
     })
   },
   methods: {
@@ -116,19 +115,19 @@ export default {
     },
 
     notifyInTransmission() {
-        if (!this.$refs.notify.isActive()) {
-          this.notifyContent = "Trying to Serve Recipe on Ambrosia";
-          this.$refs.notify.show("warning");
-        }
+      if (!this.$refs.notify.isActive()) {
+        this.notifyContent = "Trying to Serve Recipe on Ambrosia";
+        this.$refs.notify.show("warning");
+      }
     },
     notifyPostStatus() {
       if (this.didPostSucceed) {
-          this.notifyContent = "Recipe served on Ambrosia";
-          this.$refs.notify.show("success");
-        } else {
-          this.notifyContent = "Failed to Serve Recipe to Ambrosia";
-          this.$refs.notify.show("fail");
-        }
+        this.notifyContent = "Recipe served on Ambrosia";
+        this.$refs.notify.show("success");
+      } else {
+        this.notifyContent = "Failed to Serve Recipe to Ambrosia";
+        this.$refs.notify.show("fail");
+      }
     }
   },
   created: function() {
@@ -137,14 +136,14 @@ export default {
     this.addStage();
   },
   watch: {
-    isInTransmission: function(val, oldVal) {
+    isInTransmission: function(val) {
       if (val) {
         this.notifyInTransmission();
       }
     },
-    didPostSucceed: function(val, oldVal) {
+    didPostSucceed: function() {
       this.notifyPostStatus();
-    },
+    }
   }
 };
 </script>
@@ -160,4 +159,3 @@ export default {
   z-index: 99;
 }
 </style>
-

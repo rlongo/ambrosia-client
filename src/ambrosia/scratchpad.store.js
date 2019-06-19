@@ -17,7 +17,7 @@ const getters = {
   },
   getWasSuccessful(state) {
     return state.wasSuccessful;
-  } 
+  }
 };
 
 const mutations = {
