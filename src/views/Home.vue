@@ -34,10 +34,12 @@
         <a href="#" class="card-footer-item">
           Planner<font-awesome-icon icon="cart-plus"
         /></a>
-        <router-link :to="{ name: 'recipe', params: { recipeID: recipe._id }}" class="card-footer-item"
+        <router-link
+          :to="{ name: 'recipe', params: { recipeID: recipe._id } }"
+          class="card-footer-item"
           >View<font-awesome-icon icon="file"
         /></router-link>
-        <router-link :to="{name: 'home'}" class="card-footer-item"
+        <router-link :to="{ name: 'home' }" class="card-footer-item"
           >Edit<font-awesome-icon icon="edit"
         /></router-link>
       </footer>
@@ -80,7 +82,7 @@ export default {
   },
   created: function() {
     this.clearRecipes();
-  },
+  }
 };
 </script>
 

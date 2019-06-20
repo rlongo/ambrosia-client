@@ -1,6 +1,9 @@
+// Need this workaround for the .js files
+const AMBROSIA_ENDPOINT = process.env.VUE_APP_AMBROSIA_SERVER;
+
 export class Client {
   constructor() {
-    this.apiRoot = "http://127.0.0.1:8000/api/v1";
+    this.apiRoot = AMBROSIA_ENDPOINT;
   }
 
   async getRecipes(tags, author) {
@@ -47,11 +50,10 @@ export class Client {
       }
     };
 
-
     let response = await fetch(new Request(url, payload));
     let recipes = await response.json();
 
-    return [ recipes ];
+    return [recipes];
   }
 
   async postRecipe(recipe) {

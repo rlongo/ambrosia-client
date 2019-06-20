@@ -70,19 +70,19 @@ export default {
     ...mapGetters({
       status: "ambrosia/getStatus",
       recipes: "ambrosia/getRecipes"
-    }),
+    })
   },
   data() {
     return {
-    myRecipe: undefined
+      myRecipe: undefined
     };
   },
   methods: {
     isLoaded: function() {
-      return this.status==="set";
+      return this.status === "set";
     },
     ...mapActions({
-      loadRecipe: "ambrosia/loadRecipe",
+      loadRecipe: "ambrosia/loadRecipe"
     }),
     getNumStages: function() {
       if (!this.isLoaded()) {
@@ -91,7 +91,7 @@ export default {
       return this.myRecipe.stages.length;
     },
     setMyRecipe: function() {
-        this.myRecipe = this.recipes[0];
+      this.myRecipe = this.recipes[0];
     }
   },
   created: function() {
@@ -99,7 +99,7 @@ export default {
   },
   watch: {
     status: function(val) {
-      if (val==="set") {
+      if (val === "set") {
         this.setMyRecipe();
       }
     }
