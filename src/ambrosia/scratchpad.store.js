@@ -11,6 +11,12 @@ const state = {
 const getters = {
   getRecipe(state) {
     return state.recipe;
+  },
+  getIsTransmitting(state) {
+    return state.inTransmission;
+  },
+  getWasSuccessful(state) {
+    return state.wasSuccessful;
   }
 };
 
@@ -95,6 +101,7 @@ const actions = {
   },
 
   commitRecipe(context) {
+    context.commit("mWasSuccessful", false);
     context.commit("mSetTransmission", true);
 
     let a = new Client();

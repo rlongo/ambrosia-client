@@ -14,13 +14,13 @@ export default new Router({
       component: Home
     },
     {
-      path: "/recipe",
+      path: "/r/:recipeID",
       name: "recipe",
       component: () => import("./views/Recipe.vue")
     },
     {
       path: "/recipe/new",
-      name: "add recipe",
+      name: "addRecipe",
       component: () => import("./views/RecipeForm.vue")
     }
   ]

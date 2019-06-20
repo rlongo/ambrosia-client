@@ -1,52 +1,62 @@
-import Recipe from "./recipe";
 import { Client } from "./client";
 
 const state = {
-  loading: false,
-  recipe: new Recipe()
+  status: undefined, // one of: failed, loading, set
+  recipes: []
 };
 
 const getters = {
-  getIsLoading(state) {
-    return state.loading;
+  getStatus(state) {
+    return state.status;
   },
-  getRecipe(state) {
-    return state.recipe;
+  getRecipes(state) {
+    return state.recipes;
   }
 };
 
 const actions = {
-  loadRecipe(context) {
-    context.commit("setLoading", true);
+  loadRecipes(context, tags) {
+    context.commit("setStatus", "loading");
 
     let a = new Client();
-    a.getRecipes()
-      .then(response => {
-        return response.json();
-      })
+    a.getRecipes(tags)
       .then(recipes => {
-        if (recipes.length > 0) {
-          context.commit("setRecipe", recipes[0]);
-        }
+        context.commit("setRecipes", recipes);
+        context.commit("setStatus", "set");
       })
       .catch(err => {
-        console.log("error" + err);
-      })
-      .finally(() => {
-        context.commit("setLoading", false);
+        console.log("error " + err);
+        context.commit("setStatus", "failed");
       });
+  },
+  loadRecipe(context, recipeID) {
+    context.commit("setStatus", "loading");
+
+    let a = new Client();
+    a.getRecipe(recipeID)
+      .then(recipes => {
+        context.commit("setRecipes", recipes);
+        context.commit("setStatus", "set");
+      })
+      .catch(err => {
+        console.log("error " + err);
+        context.commit("setStatus", "failed");
+      });
+  },
+  clearRecipes(context) {
+    context.commit("clearRecipes");
   }
 };
 
 const mutations = {
-  setLoading(state, isLoading) {
-    state.loading = isLoading;
+  setStatus(state, status) {
+    state.status = status;
   },
-  setRecipe(state, recipe) {
-    state.recipe = recipe;
+  setRecipes(state, recipes) {
+    state.recipes = recipes;
   },
-  clearRecipe(state) {
-    state.recipe = new Recipe();
+  clearRecipes(state) {
+    state.recipes = [];
   }
 };
 

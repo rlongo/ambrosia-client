@@ -23,7 +23,10 @@
     <div class="navbar-menu" v-bind:class="{ 'is-active': isOpen }">
       <div class="navbar-start">
         <router-link class="navbar-item" v-bind:to="'/'">
-          Cart
+          Tags
+        </router-link>
+        <router-link class="navbar-item" v-bind:to="'/'">
+          Planner
         </router-link>
       </div>
 
