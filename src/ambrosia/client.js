@@ -1,9 +1,15 @@
 // Need this workaround for the .js files
 const AMBROSIA_ENDPOINT = process.env.VUE_APP_AMBROSIA_SERVER;
 
+/**
+ * Attempts to perform communications with a remote dev server OR
+ * sends them locally. The case for local routing is in production,
+ * when served by a nginx server 
+ */
 export class Client {
   constructor() {
-    this.apiRoot = AMBROSIA_ENDPOINT;
+    this.apiRoot = AMBROSIA_ENDPOINT || "/api";
+    console.log("Utilizing Ambrosia API Endpoint:", this.apiRoot);
   }
 
   async getRecipes(tags, author) {
