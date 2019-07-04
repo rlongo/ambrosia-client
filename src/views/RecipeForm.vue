@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <notification class="status-notification" ref="notify">
-      <template>
-        {{ notifyContent }}
-      </template>
+      <template>{{ notifyContent }}</template>
     </notification>
 
     <h1 class="title is-1">New Recipe</h1>
@@ -18,27 +16,36 @@
             <div class="field-label is-normal">
               <label class="label">Stage {{ slotProps.idStage + 1 }}</label>
             </div>
-            <!-- TODO add in stage name and notes
-              <div class="field-body">
+
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="text"
+                    placeholder="stage name"
+                    v-model="stageHeaders[slotProps.idStage]"
+                    v-on:change="onStageHeaderChanged(slotProps.idStage)">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
               <div class="field">
                 <div class="control">
                   <textarea
                     class="textarea"
                     rows="2"
                     placeholder="stage summary"
-                    v-model="stageSummary[slotProps.idStage]"
-                    v-on:change="onStageMetaChanged(slotProps.idStage)"
+                    v-model="stageSummaries[slotProps.idStage]"
+                    v-on:change="onStageHeaderChanged(slotProps.idStage)"
                   ></textarea>
                 </div>
               </div>
-            </div> -->
-          </div>
         </template>
 
         <template v-slot:ingredients="slotProps">
-          <recipe-form-ingredients
-            :idStage="slotProps.idStage"
-          ></recipe-form-ingredients>
+          <recipe-form-ingredients :idStage="slotProps.idStage"></recipe-form-ingredients>
         </template>
 
         <template v-slot:steps="slotProps">
@@ -48,16 +55,12 @@
         <template v-slot:recipe-footer>
           <div class="field">
             <div class="control">
-              <a class="button is-success is-pulled-right" @click="addStage"
-                >Add Stage</a
-              >
+              <a class="button is-success is-pulled-right" @click="addStage">Add Stage</a>
             </div>
           </div>
           <div class="field">
             <div class="control">
-              <a class="button is-link is-large" @click="submitRecipe"
-                >Submit</a
-              >
+              <a class="button is-link is-large" @click="submitRecipe">Submit</a>
             </div>
           </div>
         </template>
@@ -86,7 +89,9 @@ export default {
   },
   data() {
     return {
-      notifyContent: ""
+      notifyContent: "",
+      stageHeaders: [],
+      stageSummaries: []
     };
   },
   computed: {
@@ -100,7 +105,8 @@ export default {
     ...mapActions({
       setScratchpad: "scratchpad/setScratchpad",
       addStage: "scratchpad/addRecipeStage",
-      commitRecipe: "scratchpad/commitRecipe"
+      commitRecipe: "scratchpad/commitRecipe",
+      setStageHeader: "scratchpad/setStageHeader"
     }),
     getNumStages: function() {
       if (!Array.isArray(this.myRecipe.stages)) {
@@ -128,6 +134,13 @@ export default {
         this.notifyContent = "Failed to Serve Recipe to Ambrosia";
         this.$refs.notify.show("fail");
       }
+    },
+    onStageHeaderChanged(stageID) {
+      this.setStageHeader({
+        stageID: stageID,
+        name: this.stageHeaders[stageID],
+        notes: this.stageSummaries[stageID]
+      });
     }
   },
   created: function() {

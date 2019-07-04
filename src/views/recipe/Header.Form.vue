@@ -128,7 +128,7 @@ export default {
       setAuthor: "scratchpad/setRecipeAuthor",
       setTags: "scratchpad/setRecipeTags",
       setNotes: "scratchpad/setRecipeNotes"
-    })
+    }),
   },
   mounted: function() {
     // TODO this may need to be re-enabled when loading in a recipe...
